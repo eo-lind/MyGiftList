@@ -21,7 +21,5 @@ namespace MyGiftList.Models
 
         public int UserId { get; set; }
 
-        public int CategoryId { get; set; }
-
     }
 }
