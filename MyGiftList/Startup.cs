@@ -31,6 +31,7 @@ namespace MyGiftList
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<IGiftRepository, GiftRepository>();
+            services.AddTransient<IRecipientRepository, RecipientRepository>();
 
             var firebaseProjectId = Configuration.GetValue<string>("FirebaseProjectId");
             var googleTokenUrl = $"https://securetoken.google.com/{firebaseProjectId}";
