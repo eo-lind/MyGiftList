@@ -1,10 +1,16 @@
 import './App.css';
-import GiftList from './components/GiftList'
+import Header from './components/Header';
+import ApplicationViews from './components/ApplicationViews';
+import React from 'react';
+import { BrowserRouter as Router } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-      <GiftList />
+      <Router>
+        <Header />
+        <ApplicationViews />
+      </Router>
     </div>
   );
 }
