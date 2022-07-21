@@ -1,19 +1,24 @@
 import React from "react"
 import { Routes, Route } from "react-router-dom"
 import GiftList from "./GiftList"
+import RecipientList from "./RecipientList"
 
 const ApplicationViews = () => {
   return (
-    <Routes>
-      <Route path="/">
-        <Route index element={<GiftList />} />
+      <Routes>
+          <Route path="/">
+              <Route index element={<GiftList />} />
 
-        <Route path="gifts">
-          <Route index element={<GiftList />} />
-        </Route>
-      </Route>
-      <Route path="*" element={<p>Oh no! There's nothing here!</p>} />
-    </Routes>
+              <Route path="gifts">
+                  <Route index element={<GiftList />} />
+              </Route>
+
+              <Route path="recipients">
+                  <Route index element={<RecipientList />} />
+              </Route>
+          </Route>
+          <Route path="*" element={<p>Oh no! There's nothing here!</p>} />
+      </Routes>
   )
 }
 

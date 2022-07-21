@@ -2,7 +2,7 @@ import React from "react"
 import { Card, CardBody } from "reactstrap"
 import "./image.css"
 
-// uses the gift prop as a parameter
+// uses the gift prop to populate the card with specified properties from the gift object
 const Gift = ({ gift }) => {
   return (
     <Card>
