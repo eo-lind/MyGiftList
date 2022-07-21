@@ -6,13 +6,13 @@ using MyGiftList.Models;
 
 namespace MyGiftList.Repositories
 {
-    public class GiftRepository : BaseRepository
+    public class GiftRepository : BaseRepository, IGiftRepository
     {
         public GiftRepository(IConfiguration configuration) : base(configuration) { }
 
         // retrieves a list of all gifts
         public List<Gift> GetAll()
-        { 
+        {
             using (var conn = Connection)
             {
                 conn.Open();
@@ -27,7 +27,7 @@ namespace MyGiftList.Repositories
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         var gifts = new List<Gift>();
-                        
+
                         while (reader.Read())
                         {
                             gifts.Add(new Gift()
