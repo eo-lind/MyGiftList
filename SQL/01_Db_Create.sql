@@ -34,8 +34,11 @@ GO
 
 CREATE TABLE [User] (
   [Id] int PRIMARY KEY IDENTITY(1, 1),
+  [FirebaseUserId] NVARCHAR(28) NOT NULL,
   [Name] nvarchar(255) NOT NULL,
   [Email] nvarchar(255) NOT NULL
+
+  CONSTRAINT UQ_FirebaseUserId UNIQUE(FirebaseUserId)
 )
 GO
 

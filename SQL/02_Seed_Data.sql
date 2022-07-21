@@ -1,9 +1,9 @@
 SET IDENTITY_INSERT [User] ON
 INSERT INTO [User]
-    ([Id], [Name], [Email])
+    ([Id], [Name], [Email], FirebaseUserId)
 VALUES
-    (1, 'Rupert', 'rupert@rupert.com'),
-    (2, 'Olivia', 'olivia@rupert.com')
+    (1, 'Rupert', 'rupert@rupert.com', 'mSp3U1lcqWaglraPmTpF1m5LLDI3'),
+    (2, 'Olivia', 'olivia@rupert.com', 'JR7QyLfQ61fiSA1saAnFNiw8k1n1')
 SET IDENTITY_INSERT [User] OFF
 
 
