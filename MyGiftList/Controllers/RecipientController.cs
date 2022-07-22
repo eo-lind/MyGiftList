@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MyGiftList.Models;
 using MyGiftList.Repositories;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -30,11 +31,16 @@ namespace MyGiftList.Controllers
         //    return "value";
         //}
 
-        //// POST api/<RecipientController>
-        //[HttpPost]
-        //public void Post([FromBody] string value)
-        //{
-        //}
+        // POST api/<RecipientController>
+        [HttpPost]
+        public IActionResult Post(Recipient recipient)
+        {
+            // ----------CHANGE LATER TO GET CURRENT USER'S ID---------- //
+            recipient.UserId = 1;
+            _recipientRepository.Add(recipient);
+
+            return CreatedAtAction("Get", new { id = recipient.Id }, recipient);
+        }
 
         //// PUT api/<RecipientController>/5
         //[HttpPut("{id}")]
