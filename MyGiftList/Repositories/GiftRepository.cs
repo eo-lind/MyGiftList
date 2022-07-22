@@ -10,7 +10,7 @@ namespace MyGiftList.Repositories
     {
         public GiftRepository(IConfiguration configuration) : base(configuration) { }
 
-        // retrieves a list of all gifts
+        // retrieve a list of all gifts
         public List<Gift> GetAll()
         {
             using (var conn = Connection)

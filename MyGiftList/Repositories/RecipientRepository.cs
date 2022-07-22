@@ -10,7 +10,7 @@ namespace MyGiftList.Repositories
     {
         public RecipientRepository(IConfiguration configuration) : base(configuration) { }
 
-        // retrieves a list of all recipients
+        // retrieve a list of all recipients
         public List<Recipient> GetAll()
         {
             using (var conn = Connection)
@@ -41,6 +41,30 @@ namespace MyGiftList.Repositories
 
                         return recipients;
                     }
+                }
+            }
+        }
+
+        // create a new recipient record
+        public void Add(Recipient recipient)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        INSERT INTO Recipient ([Name], Birthday, UserId)
+                        OUTPUT INSERTED.ID
+                        VALUES (@Name, @Birthday, @UserId)
+                        ";
+
+                    DbUtils.AddParameter(cmd, "@Name", recipient.Name);
+                    DbUtils.AddParameter(cmd, "@Birthday", recipient.Birthday);
+                    DbUtils.AddParameter(cmd, "@UserId", recipient.UserId);
+
+                    recipient.Id = (int)cmd.ExecuteScalar();
                 }
             }
         }
