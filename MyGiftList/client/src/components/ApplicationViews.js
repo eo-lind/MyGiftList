@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom"
 import GiftList from "./GiftList"
 import RecipientList from "./RecipientList"
 import GiftForm from "./GiftForm"
+import RecipientForm from "./RecipientForm"
 
 const ApplicationViews = () => {
   return (
@@ -17,6 +18,7 @@ const ApplicationViews = () => {
 
               <Route path="recipients">
                   <Route index element={<RecipientList />} />
+                  <Route path="add" element={<RecipientForm />} />
               </Route>
           </Route>
           <Route path="*" element={<p>Oh no! There's nothing here!</p>} />
