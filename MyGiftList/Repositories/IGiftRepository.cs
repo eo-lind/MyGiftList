@@ -6,5 +6,6 @@ namespace MyGiftList.Repositories
     public interface IGiftRepository
     {
         List<Gift> GetAll();
+        void Add(Gift Gift);
     }
 }

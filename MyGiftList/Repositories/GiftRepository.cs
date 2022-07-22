@@ -45,5 +45,32 @@ namespace MyGiftList.Repositories
                 }
             }
         }
+
+        // creates a new gift record
+        public void Add(Gift gift)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        INSERT INTO Gift ([Name], ShopUrl, ImageUrl, Price, UserId)
+                        OUTPUT INSERTED.ID
+                        VALUES (@Name, @ShopUrl, @ImageUrl, @Price, @UserId)
+                        ";
+
+                    DbUtils.AddParameter(cmd, "@Name", gift.Name);
+                    DbUtils.AddParameter(cmd, "@ShopUrl", gift.ShopUrl);
+                    DbUtils.AddParameter(cmd, "@ImageUrl", gift.ImageUrl);
+                    DbUtils.AddParameter(cmd, "@Price", gift.Price);
+                    DbUtils.AddParameter(cmd, "@UserId", gift.UserId);
+
+                    gift.Id = (int)cmd.ExecuteScalar();
+
+                }
+            }
+        }
     }
 }
