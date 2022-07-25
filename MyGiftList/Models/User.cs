@@ -6,6 +6,8 @@ namespace MyGiftList.Models
     {
         public int Id { get; set; }
 
+        public string FirebaseUserId { get; set; }
+
         [Required]
         public string Name { get; set; }
 
