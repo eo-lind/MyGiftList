@@ -30,9 +30,7 @@ namespace MyGiftList
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddTransient<IGiftRepository, GiftRepository>();
-            services.AddTransient<IRecipientRepository, RecipientRepository>();
-
+            
             var firebaseProjectId = Configuration.GetValue<string>("FirebaseProjectId");
             var googleTokenUrl = $"https://securetoken.google.com/{firebaseProjectId}";
             services
@@ -49,6 +47,11 @@ namespace MyGiftList
                         ValidateLifetime = true
                     };
                 });
+
+            services.AddTransient<IGiftRepository, GiftRepository>();
+            services.AddTransient<IRecipientRepository, RecipientRepository>();
+            services.AddTransient<IUserRepository, UserRepository>();
+
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
