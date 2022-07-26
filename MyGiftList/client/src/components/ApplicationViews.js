@@ -4,6 +4,7 @@ import GiftList from "./GiftList"
 import RecipientList from "./RecipientList"
 import GiftForm from "./GiftForm"
 import RecipientForm from "./RecipientForm"
+import RecipientDetails from "./RecipientDetails"
 import Login from "./Login"
 import Register from "./Register.js"
 
@@ -32,6 +33,7 @@ const ApplicationViews = ({ isLoggedIn }) => {
 
               <Route path="recipients">
                   <Route index element={<RecipientList />} />
+                  <Route path=":id" element={<RecipientDetails />} />
                   <Route path="add" element={<RecipientForm />} />
               </Route>
               <Route path="user" element={<p>Oh no! There's nothing here!</p>} />

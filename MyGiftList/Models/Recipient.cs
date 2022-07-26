@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace MyGiftList.Models
@@ -15,5 +16,6 @@ namespace MyGiftList.Models
 
         public int UserId { get; set; }
 
+        public List<RecipientGift> RecipientGifts{ get; set;}
     }
 }

@@ -24,6 +24,18 @@ namespace MyGiftList.Controllers
             return Ok(_recipientRepository.GetAll());
         }
 
+        // GET api/<RecipientController>/5
+        [HttpGet("GetRecipientByIdWithGifts/{id}")]
+        public IActionResult GetRecipientByIdWithGifts(int id)
+        {
+            var recipient = _recipientRepository.GetRecipientByIdWithGifts(id);
+            if (recipient == null)
+            {
+                return NotFound();
+            }
+            return Ok(recipient);
+        }
+
         //// GET api/<RecipientController>/5
         //[HttpGet("{id}")]
         //public string Get(int id)
