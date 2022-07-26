@@ -72,5 +72,33 @@ namespace MyGiftList.Repositories
                 }
             }
         }
+
+        // creates a new RecipientGift record
+        public void AddRecipientGift(RecipientGift recipientGift)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        INSERT INTO RecipientGift (RecipientId, GiftId, Qty, Notes, UserId)
+                        OUTPUT INSERTED.ID
+                        VALUES (@RecipientId, @GiftId, @Qty, @Notes, @UserId)
+                        ";
+
+                    DbUtils.AddParameter(cmd, "@RecipientId", recipientGift.RecipientId);
+                    DbUtils.AddParameter(cmd, "@GiftId", recipientGift.GiftId);
+                    DbUtils.AddParameter(cmd, "@Qty", recipientGift.Qty);
+                    DbUtils.AddParameter(cmd, "@Notes", recipientGift.Notes);
+                    DbUtils.AddParameter(cmd, "@UserId", recipientGift.UserId);
+
+                    recipientGift.Id = (int)cmd.ExecuteScalar();
+
+
+                }
+            }
+        }
     }
 }
