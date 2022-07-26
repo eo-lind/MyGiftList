@@ -66,17 +66,20 @@ namespace MyGiftList.Repositories
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
                         Recipient recipient = null;
-                        if (reader.Read())
+                        while (reader.Read())
                         {
-                            recipient = new Recipient()
+                            if (recipient == null)
                             {
-                                Id = id,
-                                Name = DbUtils.GetString(reader, "Name"),
-                                Birthday = DbUtils.GetDateTime(reader, "Birthday"),
-                                UserId = DbUtils.GetInt(reader, "UserId"),
-                                RecipientGifts = new List<RecipientGift>()
-                            };
-                            // adds a list of gifts assigned to that recipient if they exist
+                                recipient = new Recipient()
+                                {
+                                    Id = id,
+                                    Name = DbUtils.GetString(reader, "Name"),
+                                    Birthday = DbUtils.GetDateTime(reader, "Birthday"),
+                                    UserId = DbUtils.GetInt(reader, "UserId"),
+                                    RecipientGifts = new List<RecipientGift>()
+                                };
+                            }
+                            // display a list of gifts assigned to that recipient if they exist
                             if (DbUtils.IsNotDbNull(reader, "RecipientGiftId"))
                             {
                                 recipient.RecipientGifts.Add(new RecipientGift()

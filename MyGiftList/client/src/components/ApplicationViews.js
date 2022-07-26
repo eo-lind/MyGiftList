@@ -28,6 +28,7 @@ const ApplicationViews = ({ isLoggedIn }) => {
 
               <Route path="gifts">
                   <Route index element={<GiftList />} />
+                  {/* <Route path=":id" element={<GiftDetails />} */}
                   <Route path="add" element={<GiftForm />} />
               </Route>
 
