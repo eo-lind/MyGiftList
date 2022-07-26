@@ -31,6 +31,17 @@ VALUES
     (7, 'Henry Rollins', '1961-2-13', 2)
 SET IDENTITY_INSERT [Recipient] OFF
 
+--SET IDENTITY_INSERT [RecipientGift] ON
+--INSERT INTO [RecipientGift]
+--    ([Id], [RecipientId], [GiftId], [Qty], [Notes], [UserId])
+--VALUES
+--    (1, 1, 1, 1, 'small', 1),
+--    (2, 2, 2, 1, 'have giftwrapped', 1),
+--    (3, 6, 3, 2, 'order an extra for me!', 2),
+--    (4, 7, 4, 1, 'XXL', 2),
+--    (5, 6, 4, 2, 'one in small, one in medium', 2)
+--SET IDENTITY_INSERT [RecipientGift] OFF
+
 --SET IDENTITY_INSERT [Category] ON
 --INSERT INTO [Category]
 --    ([Id], [Name], [UserId])
