@@ -42,6 +42,18 @@ namespace MyGiftList.Controllers
             return CreatedAtAction("Get", new { id = gift.Id }, gift);
         }
 
+        // POST api/<GiftController>
+        [HttpPost("AddRecipientGift")]
+        public IActionResult Post(RecipientGift recipientGift)
+        {
+
+            // ----------CHANGE LATER TO GET CURRENT USER'S ID---------- //
+            recipientGift.UserId = 2;
+            _giftRepository.AddRecipientGift(recipientGift);
+
+            return CreatedAtAction("Get", new { id = recipientGift.Id }, recipientGift);
+        }
+
         //// PUT api/<GiftController>/5
         //[HttpPut("{id}")]
         //public void Put(int id, [FromBody] string value)
