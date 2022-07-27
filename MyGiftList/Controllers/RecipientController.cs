@@ -46,13 +46,6 @@ namespace MyGiftList.Controllers
             return Ok(recipient);
         }
 
-        //// GET api/<RecipientController>/5
-        //[HttpGet("{id}")]
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
-
         // POST api/<RecipientController>
         [HttpPost]
         public IActionResult Post(Recipient recipient)
@@ -62,19 +55,6 @@ namespace MyGiftList.Controllers
 
             return CreatedAtAction("Get", new { id = recipient.Id }, recipient);
         }
-
-
-        //// PUT api/<RecipientController>/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody] string value)
-        //{
-        //}
-
-        //// DELETE api/<RecipientController>/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
 
         private User GetCurrentUser()
         {
