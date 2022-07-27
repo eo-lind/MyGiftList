@@ -73,7 +73,7 @@ CREATE TABLE [RecipientGift] (
   [RecipientId] int NOT NULL,
   [GiftId] int NOT NULL,
   [Qty] int NOT NULL,
-  [Notes] nvarchar(255),
+  [Notes] nvarchar(255) NOT NULL,
   [UserId] int NOT NULL
 )
 GO
