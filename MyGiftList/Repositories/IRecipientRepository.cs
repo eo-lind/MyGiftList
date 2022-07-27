@@ -5,7 +5,7 @@ namespace MyGiftList.Repositories
 {
     public interface IRecipientRepository
     {
-        List<Recipient> GetAll();
+        List<Recipient> GetAll(int id);
         Recipient GetRecipientByIdWithGifts(int id);
         void Add(Recipient recipient);
     }

@@ -11,7 +11,7 @@ namespace MyGiftList.Repositories
         public RecipientRepository(IConfiguration configuration) : base(configuration) { }
 
         // retrieve a list of all recipients
-        public List<Recipient> GetAll()
+        public List<Recipient> GetAll(int id)
         {
             using (var conn = Connection)
             {
@@ -22,7 +22,10 @@ namespace MyGiftList.Repositories
                     cmd.CommandText = @"
                         SELECT Id, [Name], Birthday, UserId
                         FROM Recipient
+                        WHERE UserId = @id
                         ";
+
+                    DbUtils.AddParameter(cmd, "@id", id);
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
@@ -131,5 +134,6 @@ namespace MyGiftList.Repositories
                 }
             }
         }
+
     }
 }

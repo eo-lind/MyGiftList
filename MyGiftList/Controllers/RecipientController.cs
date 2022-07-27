@@ -21,10 +21,15 @@ namespace MyGiftList.Controllers
         }
 
         // GET: api/<RecipientController>
+        // Lists only recipients created by current user
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult Get(int id)
         {
-            return Ok(_recipientRepository.GetAll());
+            id = GetCurrentUser().Id;
+            var userRecipients = _recipientRepository.GetAll(id);
+            if (userRecipients == null)
+            { return NotFound(); }
+            return Ok(userRecipients);
         }
 
         // GET api/<RecipientController>/5
