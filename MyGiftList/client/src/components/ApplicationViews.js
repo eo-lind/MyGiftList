@@ -7,6 +7,7 @@ import RecipientForm from "./RecipientForm"
 import RecipientDetails from "./RecipientDetails"
 import Login from "./Login"
 import Register from "./Register.js"
+import Home from "./Home"
 
 const ApplicationViews = ({ isLoggedIn }) => {
   return (
@@ -14,7 +15,7 @@ const ApplicationViews = ({ isLoggedIn }) => {
           <Route path="/">
               <Route
                   index
-                  element={isLoggedIn ? <GiftList /> : <Navigate to="/login" />}
+                  element={isLoggedIn ? <Home /> : <Navigate to="/login" />}
               />
 
               <Route
@@ -25,21 +26,18 @@ const ApplicationViews = ({ isLoggedIn }) => {
               <Route path="register" element={<Register />} />
 
               <Route path="gifts">
-                  <Route index element={<GiftList />} />
-                  {/* <Route path=":id" element={<GiftDetails />} */}
-                  <Route path="add" element={<GiftForm />} />
+                  <Route index element={isLoggedIn ? <GiftList /> : <Navigate to="/login" />} />
+                  <Route path="add" element={isLoggedIn ? <GiftForm /> : <Navigate to="/login" />} />
               </Route>
 
               <Route path="recipients">
-                  <Route index element={<RecipientList />} />
-                  <Route path=":id" element={<RecipientDetails />} />
-                  <Route path="add" element={<RecipientForm />} />
+                  <Route index element={isLoggedIn ? <RecipientList /> : <Navigate to="/login" />} />
+                  <Route path=":id" element={isLoggedIn ? <RecipientDetails /> : <Navigate to="/login" />} />
+                  <Route path="add" element={isLoggedIn ? <RecipientForm /> : <Navigate to="/login" />} />
               </Route>
-              <Route
-                  path="user"
-                  element={<p>Oh no! There's nothing here!</p>}
-              />
-          </Route>
+              <Route path="user" element={<p>Oh no! There's nothing here!</p>} />
+              <Route path="*" element={<p>Oh no! There's nothing here!</p>} />
+            </Route>
       </Routes>
   )
 }
