@@ -19,9 +19,7 @@ const ApplicationViews = ({ isLoggedIn }) => {
 
               <Route
                   path="add"
-                  element={
-                      isLoggedIn ? <GiftList /> : <Navigate to="/login" />
-                  }
+                  element={isLoggedIn ? <GiftList /> : <Navigate to="/login" />}
               />
               <Route path="login" element={<Login />} />
               <Route path="register" element={<Register />} />
@@ -37,7 +35,10 @@ const ApplicationViews = ({ isLoggedIn }) => {
                   <Route path=":id" element={<RecipientDetails />} />
                   <Route path="add" element={<RecipientForm />} />
               </Route>
-              <Route path="user" element={<p>Oh no! There's nothing here!</p>} />
+              <Route
+                  path="user"
+                  element={<p>Oh no! There's nothing here!</p>}
+              />
           </Route>
       </Routes>
   )
