@@ -19,7 +19,7 @@ namespace MyGiftList.Controllers
         [HttpGet("{firebaseUserId}")]
         public IActionResult GetByFirebaseUserId(string firebaseUserId)
         {
-            var user = _userRepository.GetByFirebaseId(firebaseUserId);
+            var user = _userRepository.GetByFirebaseUserId(firebaseUserId);
             if (user == null)
             {
                 return NotFound();
@@ -30,7 +30,7 @@ namespace MyGiftList.Controllers
         [HttpGet("DoesUserExist/{firebaseUserId}")]
         public IActionResult DoesUserExist(string firebaseUserId)
         {
-            var user = _userRepository.GetByFirebaseId(firebaseUserId);
+            var user = _userRepository.GetByFirebaseUserId(firebaseUserId);
             if (user == null)
             {
                 return NotFound();
@@ -45,5 +45,7 @@ namespace MyGiftList.Controllers
             return CreatedAtAction(
                 nameof(GetByFirebaseUserId), new { firebaseUserId = user.FirebaseUserId }, user);
         }
+
+
     }
 }

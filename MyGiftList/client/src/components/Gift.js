@@ -50,7 +50,7 @@ const Gift = ({ gift }) => {
       } else {
           //invokes addRecipientGift passing recipientGift as an argument.
           //once complete, changes the url and display the gifts list
-          addRecipientGift(recipientGift).then(() => navigate("/gifts"))
+          addRecipientGift(recipientGift).then(() => navigate("/"))
       }
   }
 
