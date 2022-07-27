@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 import { addRecipient } from "../modules/recipientManager";
 
 const RecipientForm = () => {
@@ -24,7 +24,7 @@ const RecipientForm = () => {
   const handleSave = (evt) => {
     evt.preventDefault()
 
-    addRecipient(recipient).then((taco) => {
+    addRecipient(recipient).then((res) => {
       navigate("/recipients")
     })
   }

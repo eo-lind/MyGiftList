@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { ListGroup, ListGroupItem, Card, CardBody } from "reactstrap";
+import { Card, CardBody } from "reactstrap";
 import { useParams } from "react-router-dom";
-import Recipient from "./Recipient";
 import { getRecipient } from "../modules/recipientManager";
 import { Link } from "react-router-dom"
 
