@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MyGiftList.Models;
 using MyGiftList.Repositories;
+using System.Security.Claims;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -11,10 +12,12 @@ namespace MyGiftList.Controllers
     public class RecipientController : ControllerBase
     {
         private readonly IRecipientRepository _recipientRepository;
+        private IUserRepository _userRepository;
 
-        public RecipientController(IRecipientRepository recipientRepository)
+        public RecipientController(IRecipientRepository recipientRepository, IUserRepository userRepository)
         {
             _recipientRepository = recipientRepository;
+            _userRepository = userRepository;
         }
 
         // GET: api/<RecipientController>
@@ -47,14 +50,13 @@ namespace MyGiftList.Controllers
         [HttpPost]
         public IActionResult Post(Recipient recipient)
         {
-            // ----------CHANGE LATER TO GET CURRENT USER'S ID---------- //
-            recipient.UserId = 1;
+            recipient.UserId = GetCurrentUser().Id;
             _recipientRepository.Add(recipient);
 
             return CreatedAtAction("Get", new { id = recipient.Id }, recipient);
         }
 
-        
+
         //// PUT api/<RecipientController>/5
         //[HttpPut("{id}")]
         //public void Put(int id, [FromBody] string value)
@@ -66,5 +68,11 @@ namespace MyGiftList.Controllers
         //public void Delete(int id)
         //{
         //}
+
+        private User GetCurrentUser()
+        {
+            var firebaseUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return _userRepository.GetByFirebaseUserId(firebaseUserId);
+        }
     }
 }

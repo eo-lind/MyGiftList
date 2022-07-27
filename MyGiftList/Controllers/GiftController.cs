@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MyGiftList.Repositories;
 using MyGiftList.Models;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -8,12 +10,16 @@ namespace MyGiftList.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class GiftController : ControllerBase
     {
         private readonly IGiftRepository _giftRepository;
-        public GiftController(IGiftRepository giftRepository)
+        private IUserRepository _userRepository;
+
+        public GiftController(IGiftRepository giftRepository, IUserRepository userRepository)
         {
             _giftRepository = giftRepository;
+            _userRepository = userRepository;
         }
 
         // GET: api/<GiftController>
@@ -23,20 +29,11 @@ namespace MyGiftList.Controllers
             return Ok(_giftRepository.GetAll());
         }
 
-        //// GET api/<GiftController>/5
-        //[HttpGet("{id}")]
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
-
         // POST api/<GiftController>
         [HttpPost]
         public IActionResult Post(Gift gift)
         {
-
-            // ----------CHANGE LATER TO GET CURRENT USER'S ID---------- //
-            gift.UserId = 2;
+            gift.UserId = GetCurrentUser().Id;
             _giftRepository.Add(gift);
 
             return CreatedAtAction("Get", new { id = gift.Id }, gift);
@@ -46,24 +43,16 @@ namespace MyGiftList.Controllers
         [HttpPost("AddRecipientGift")]
         public IActionResult Post(RecipientGift recipientGift)
         {
-
-            // ----------CHANGE LATER TO GET CURRENT USER'S ID---------- //
-            recipientGift.UserId = 2;
+            recipientGift.UserId = GetCurrentUser().Id;
             _giftRepository.AddRecipientGift(recipientGift);
 
             return CreatedAtAction("Get", new { id = recipientGift.Id }, recipientGift);
         }
 
-        //// PUT api/<GiftController>/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody] string value)
-        //{
-        //}
-
-        //// DELETE api/<GiftController>/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
+        private User GetCurrentUser()
+        {
+            var firebaseUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return _userRepository.GetByFirebaseUserId(firebaseUserId);
+        }
     }
 }

@@ -4,7 +4,7 @@ namespace MyGiftList.Repositories
 {
     public interface IUserRepository
     {
-        User GetByFirebaseId(string firebaseUserId);
+        User GetByFirebaseUserId(string firebaseUserId);
 
         void Add(User user);
     }

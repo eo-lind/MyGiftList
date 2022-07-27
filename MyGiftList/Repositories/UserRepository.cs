@@ -8,7 +8,7 @@ namespace MyGiftList.Repositories
     {
         public UserRepository(IConfiguration configuration) : base(configuration) { }
 
-        public User GetByFirebaseId(string firebaseUserId)
+        public User GetByFirebaseUserId(string firebaseUserId)
         {
             using (var conn = Connection)
             {
