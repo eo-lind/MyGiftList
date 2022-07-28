@@ -15,3 +15,14 @@ export const addRecipientGift = (recipientGift) => {
     .then((response) => response.json())
   })
 }
+
+export const deleteRecipientGift = (id) => {
+  return getToken().then((token) => {
+    return fetch(`${baseUrl}/${id}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+    })
+  })
+}

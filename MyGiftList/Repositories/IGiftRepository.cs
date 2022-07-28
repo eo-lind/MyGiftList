@@ -5,7 +5,7 @@ namespace MyGiftList.Repositories
 {
     public interface IGiftRepository
     {
-        List<Gift> GetAll();
+        List<Gift> GetAll(int id);
         void Add(Gift gift);
         void AddRecipientGift(RecipientGift recipientGift);
     }

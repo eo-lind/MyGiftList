@@ -11,7 +11,7 @@ namespace MyGiftList.Repositories
         public GiftRepository(IConfiguration configuration) : base(configuration) { }
 
         // retrieve a list of all gifts
-        public List<Gift> GetAll()
+        public List<Gift> GetAll(int id)
         {
             using (var conn = Connection)
             {
@@ -22,7 +22,10 @@ namespace MyGiftList.Repositories
                     cmd.CommandText = @"
                         SELECT Id, [Name], ShopUrl, ImageUrl, Price, UserId
                         FROM Gift
+                        WHERE UserId = @id
                         ";
+
+                    DbUtils.AddParameter(cmd, "@id", id);
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {

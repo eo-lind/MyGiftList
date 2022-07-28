@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using MyGiftList.Models;
 using MyGiftList.Repositories;
 using System.Security.Claims;
@@ -9,6 +10,7 @@ namespace MyGiftList.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class RecipientController : ControllerBase
     {
         private readonly IRecipientRepository _recipientRepository;
@@ -21,10 +23,15 @@ namespace MyGiftList.Controllers
         }
 
         // GET: api/<RecipientController>
+        // Lists only recipients created by current user
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult Get(int id)
         {
-            return Ok(_recipientRepository.GetAll());
+            id = GetCurrentUser().Id;
+            var userRecipients = _recipientRepository.GetAll(id);
+            if (userRecipients == null)
+            { return NotFound(); }
+            return Ok(userRecipients);
         }
 
         // GET api/<RecipientController>/5
@@ -39,13 +46,6 @@ namespace MyGiftList.Controllers
             return Ok(recipient);
         }
 
-        //// GET api/<RecipientController>/5
-        //[HttpGet("{id}")]
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
-
         // POST api/<RecipientController>
         [HttpPost]
         public IActionResult Post(Recipient recipient)
@@ -55,19 +55,6 @@ namespace MyGiftList.Controllers
 
             return CreatedAtAction("Get", new { id = recipient.Id }, recipient);
         }
-
-
-        //// PUT api/<RecipientController>/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody] string value)
-        //{
-        //}
-
-        //// DELETE api/<RecipientController>/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
 
         private User GetCurrentUser()
         {

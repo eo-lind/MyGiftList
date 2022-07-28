@@ -32,7 +32,7 @@ const Gift = ({ gift }) => {
       setRecipientGift(newRecipientGift)
   }
 
-  // loads recipient data for dropdwn and updates state
+  // loads recipient data for dropdown and updates state
   useEffect(() => {
       getAllRecipients().then((recipients) => {
           setRecipients(recipients)
@@ -50,7 +50,7 @@ const Gift = ({ gift }) => {
       } else {
           //invokes addRecipientGift passing recipientGift as an argument.
           //once complete, changes the url and display the gifts list
-          addRecipientGift(recipientGift).then(() => navigate("/"))
+          addRecipientGift(recipientGift).then(() => navigate(`/recipients/${recipientId}`))
       }
   }
 

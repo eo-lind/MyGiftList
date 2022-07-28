@@ -23,10 +23,17 @@ namespace MyGiftList.Controllers
         }
 
         // GET: api/<GiftController>
+        // Lists only gifts created by current user
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult Get(int id)
         {
-            return Ok(_giftRepository.GetAll());
+            id = GetCurrentUser().Id;
+            var userGifts = _giftRepository.GetAll(id);
+            if (userGifts == null)
+            {
+                return NotFound();
+            }
+            return Ok(userGifts);
         }
 
         // POST api/<GiftController>
