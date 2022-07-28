@@ -7,5 +7,6 @@ namespace MyGiftList.Repositories
         void Delete(int id);
         void Add(RecipientGift recipientGift);
         void Update(RecipientGift recipientGift);
+        RecipientGift GetRecipientGiftById(int id);
     }
 }

@@ -10,6 +10,47 @@ namespace MyGiftList.Repositories
     {
         public RecipientGiftRepository(IConfiguration configuration) : base(configuration) { }
 
+        // gets a RecipientGift record by id
+        public RecipientGift GetRecipientGiftById(int id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        SELECT Id, RecipientId, GiftId, Qty, Notes, UserId
+                        FROM RecipientGift
+                        WHERE Id = @Id
+                        ";
+
+                    DbUtils.AddParameter(cmd, "@Id", id);
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        RecipientGift recipientGift = null;
+                        while (reader.Read())
+                        {
+                            if (recipientGift == null)
+                            {
+                                recipientGift = new RecipientGift()
+                                {
+                                    Id = id,
+                                    RecipientId = DbUtils.GetInt(reader, "RecipientId"),
+                                    GiftId = DbUtils.GetInt(reader, "GiftId"),
+                                    Qty = DbUtils.GetInt(reader, "Qty"),
+                                    Notes = DbUtils.GetString(reader, "Notes"),
+                                    UserId = DbUtils.GetInt(reader, "UserId"),
+                                };
+                            }
+                        }
+                        return recipientGift;
+                    }
+                }
+            }
+        }
+
         // ----------------------------------
         // THIS DOESN'T WORK (Want to replace the one in GiftRepository/Controller)
         // ----------------------------------

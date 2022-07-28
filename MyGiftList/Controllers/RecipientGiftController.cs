@@ -20,14 +20,17 @@ namespace MyGiftList.Controllers
             _userRepository = userRepository;
         }
 
-
-
-        //// GET api/<RecipientGiftController>/5
-        //[HttpGet("{id}")]
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
+        // GET api/<RecipientGiftController>/5
+        [HttpGet("{id}")]
+        public IActionResult GetRecipientGiftById(int id)
+        {
+            var recipientGift = _recipientGiftRepository.GetRecipientGiftById(id);
+            if (recipientGift == null)
+            {
+                return NotFound();
+            }
+            return Ok(recipientGift);
+        }
 
         // POST api/<RecipientGiftController>
         [HttpPost]
