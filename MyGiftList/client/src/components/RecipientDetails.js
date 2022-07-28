@@ -37,8 +37,7 @@ const RecipientDetails = () => {
                                   className="gift-image"
                               />
                           </div>
-                          {/* TODO: make sure this link works properly once gift details view is built */}
-                          <h6><Link to={"/gifts/" + recipientGift.gift.id}>{recipientGift.gift.name}</Link></h6>
+                          <h6>{recipientGift.gift.name}</h6>
                           <p>
                               <strong>Notes:</strong> {recipientGift?.notes}
                           </p>
