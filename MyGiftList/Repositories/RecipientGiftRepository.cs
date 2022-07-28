@@ -41,6 +41,31 @@ namespace MyGiftList.Repositories
             }
         }
 
+        // updates a RecipientGift record
+        public void Update(RecipientGift recipientGift)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        UPDATE RecipientGift
+                        SET Qty = @Qty,
+                            Notes = @Notes
+                        WHERE Id = @Id
+                        ";
+
+                    DbUtils.AddParameter(cmd, "@Qty", recipientGift.Qty);
+                    DbUtils.AddParameter(cmd, "@Notes", recipientGift.Notes);
+                    DbUtils.AddParameter(cmd, "@Id", recipientGift.Id);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+        
         // deletes a RecipientGift record
         public void Delete(int id)
         {

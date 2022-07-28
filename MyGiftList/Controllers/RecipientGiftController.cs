@@ -20,12 +20,7 @@ namespace MyGiftList.Controllers
             _userRepository = userRepository;
         }
 
-        // GET: api/<RecipientGiftController>
-        //[HttpGet]
-        //public IEnumerable<string> Get()
-        //{
-        //    return new string[] { "value1", "value2" };
-        //}
+
 
         //// GET api/<RecipientGiftController>/5
         //[HttpGet("{id}")]
@@ -45,13 +40,22 @@ namespace MyGiftList.Controllers
         }
 
 
-        //// PUT api/<RecipientGiftController>/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody] string value)
-        //{
-        //}
+        // PUT api/<RecipientGiftController>/5
+        // {id} is a route param
+        [HttpPut("{id}")]
+        public IActionResult Update(int id, RecipientGift recipientGift)
+        {
+            //if (id != recipientGift.Id)
+            //{
+            //    return BadRequest();
+            //}
+
+            _recipientGiftRepository.Update(recipientGift);
+            return NoContent();
+        }
 
         // DELETE api/<RecipientGiftController>/5
+        // {id} is a route param
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
