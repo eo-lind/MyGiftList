@@ -8,7 +8,7 @@ namespace MyGiftList.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize]
+    [Authorize]
     public class RecipientGiftController : ControllerBase
     {
         private readonly IRecipientGiftRepository _recipientGiftRepository;
@@ -39,7 +39,7 @@ namespace MyGiftList.Controllers
             recipientGift.UserId = GetCurrentUser().Id;
             _recipientGiftRepository.Add(recipientGift);
 
-            return CreatedAtAction("Get", new { id = recipientGift.Id }, recipientGift);
+            return NoContent();
         }
 
 
@@ -48,11 +48,6 @@ namespace MyGiftList.Controllers
         [HttpPut("{id}")]
         public IActionResult Update(int id, RecipientGift recipientGift)
         {
-            //if (id != recipientGift.Id)
-            //{
-            //    return BadRequest();
-            //}
-
             _recipientGiftRepository.Update(recipientGift);
             return NoContent();
         }

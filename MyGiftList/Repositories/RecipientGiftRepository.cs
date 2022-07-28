@@ -51,9 +51,6 @@ namespace MyGiftList.Repositories
             }
         }
 
-        // ----------------------------------
-        // THIS DOESN'T WORK (Want to replace the one in GiftRepository/Controller)
-        // ----------------------------------
         // creates a new RecipientGift record
         public void Add(RecipientGift recipientGift)
         {

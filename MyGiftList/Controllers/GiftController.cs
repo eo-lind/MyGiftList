@@ -45,16 +45,6 @@ namespace MyGiftList.Controllers
             return CreatedAtAction("Get", new { id = gift.Id }, gift);
         }
 
-        // POST api/<GiftController>
-        [HttpPost("AddRecipientGift")]
-        public IActionResult Post(RecipientGift recipientGift)
-        {
-            recipientGift.UserId = GetCurrentUser().Id;
-            _giftRepository.AddRecipientGift(recipientGift);
-
-            return CreatedAtAction("Get", new { id = recipientGift.Id }, recipientGift);
-        }
-
         private User GetCurrentUser()
         {
             var firebaseUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;

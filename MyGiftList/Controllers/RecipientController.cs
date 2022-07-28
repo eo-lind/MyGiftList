@@ -8,7 +8,7 @@ namespace MyGiftList.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize]
+    [Authorize]
     public class RecipientController : ControllerBase
     {
         private readonly IRecipientRepository _recipientRepository;
