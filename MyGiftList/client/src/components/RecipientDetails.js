@@ -1,16 +1,25 @@
 import React, { useEffect, useState } from "react";
-import { Card, CardBody } from "reactstrap";
-import { useParams } from "react-router-dom";
+import { Card, CardBody, Button } from "reactstrap";
+import { useParams, useNavigate } from "react-router-dom";
 import { getRecipient } from "../modules/recipientManager";
 import { Link } from "react-router-dom"
+import { deleteRecipientGift } from "../modules/recipientGiftManager";
 
 const RecipientDetails = () => {
   const [recipient, setRecipient] = useState();
   const { id } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     getRecipient(id).then(setRecipient)
   }, [])
+
+
+  const handleDeleteRecipientGift = (giftId) => {
+    deleteRecipientGift(giftId).then(() => navigate("/recipients"))
+  }
+
+
 
   if (!recipient) {
     return null
@@ -48,7 +57,7 @@ const RecipientDetails = () => {
                               ${recipientGift.gift.price} |{" "}
                               <a href={recipientGift.gift.shopUrl} target="_blank">
                                   Buy
-                              </a>
+                              </a> | <span onClick={() => handleDeleteRecipientGift(recipientGift.id)}>Remove</span>
                           </p>
                       </div>
                   </CardBody>
