@@ -7,6 +7,6 @@ namespace MyGiftList.Repositories
     {
         List<Recipient> GetAll(int id);
         Recipient GetRecipientByIdWithGifts(int id);
-        void Add(Recipient recipient);
+        void Add(Recipient recipient); // void: method doesn't return a value
     }
 }
