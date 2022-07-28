@@ -3,7 +3,7 @@ import { getToken } from "./authManager"
 const baseUrl = "/api/gift"
 //TODO: update the baseUrls & path if add function changes
 
-const newBaseUrl = "/api/recipientGift"
+const newBaseUrl = "/api/RecipientGift"
 
 export const addRecipientGift = (recipientGift) => {
   return getToken().then((token) => {
@@ -27,5 +27,30 @@ export const deleteRecipientGift = (id) => {
           Authorization: `Bearer ${token}`
         }
     })
+  })
+}
+
+export const updateRecipientGift = (recipientGift) => {
+
+  return getToken().then((token) =>
+      fetch(`${newBaseUrl}/${recipientGift.id}`, {
+          method: "PUT",
+          headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+          },
+          body: JSON.stringify(recipientGift),
+      })
+  )
+}
+
+// fetches a RecipientGift object by Id to be used with the edit form
+export const getRecipientGiftById = (id) => {
+  return getToken().then((token) => {
+    return fetch(`${newBaseUrl}/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }).then((response) => response.json())
   })
 }

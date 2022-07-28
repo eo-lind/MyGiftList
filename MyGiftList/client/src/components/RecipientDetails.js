@@ -19,8 +19,6 @@ const RecipientDetails = () => {
     deleteRecipientGift(giftId).then(() => navigate("/recipients"))
   }
 
-
-
   if (!recipient) {
     return null
   }
@@ -36,9 +34,9 @@ const RecipientDetails = () => {
               <h5>Gifts for {recipient.name}</h5>
           </div>
           {recipient.recipientGifts?.map((recipientGift) => (
-              <Card>
+              <Card key={"recipientGift__" + recipientGift.id}>
                   <CardBody>
-                      <div key={"recipientGift__" + recipientGift.id}>
+                      <div>
                           <div className="gift-image-container">
                               <img
                                   src={recipientGift.gift.imageUrl}
@@ -55,10 +53,26 @@ const RecipientDetails = () => {
                           </p>
                           <p>
                               ${recipientGift.gift.price} |{" "}
-                              <a href={recipientGift.gift.shopUrl} target="_blank">
+                              <a
+                                  href={recipientGift.gift.shopUrl}
+                                  target="_blank"
+                              >
                                   Buy
-                              </a> | <span onClick={() => handleDeleteRecipientGift(recipientGift.id)}>Remove</span>
+                              </a>{" "}
+                              |{" "}
+                              <span
+                                  onClick={() =>
+                                      handleDeleteRecipientGift(
+                                          recipientGift.id
+                                      )
+                                  }
+                              >
+                                  Remove
+                              </span>
                           </p>
+                          <Link to={`/recipientgifts/${recipientGift.id}/edit`}>
+                              <Button>Edit</Button>
+                          </Link>
                       </div>
                   </CardBody>
               </Card>
