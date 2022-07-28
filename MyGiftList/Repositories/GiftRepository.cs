@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Data.SqlClient;
-using MyGiftList.Utils;
+using MyGiftList.Utils; // DbUtils is a helper class we created to simplify some code (especially how to handle null values)
 using MyGiftList.Models;
 
 namespace MyGiftList.Repositories
@@ -50,7 +50,7 @@ namespace MyGiftList.Repositories
         }
 
         // creates a new gift record
-        public void Add(Gift gift)
+        public void Add(Gift gift) // void: method doesn't return a value
         {
             using (var conn = Connection)
             {

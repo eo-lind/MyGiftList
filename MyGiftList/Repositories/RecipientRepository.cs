@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using Microsoft.Data.SqlClient;
-using MyGiftList.Utils;
+using MyGiftList.Utils; // DbUtils is a helper class we created to simplify some code (especially how to handle null values)
 using MyGiftList.Models;
 using Microsoft.Extensions.Configuration;
 
@@ -48,7 +48,7 @@ namespace MyGiftList.Repositories
             }
         }
 
-        // get a recipient by Id (details view)
+        // get a recipient by Id as well as associated Recipient Gift objects (details view) -> this more complex query is a more efficient use of resources than separate queries for a recipient and a list of RecipientGift objects
         public Recipient GetRecipientByIdWithGifts(int id)
         {
             using (var conn = Connection)
@@ -112,7 +112,7 @@ namespace MyGiftList.Repositories
         }
 
         // create a new recipient record
-        public void Add(Recipient recipient)
+        public void Add(Recipient recipient) // void: method doesn't return a value
         {
             using (var conn = Connection)
             {
