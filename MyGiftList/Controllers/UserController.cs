@@ -7,16 +7,18 @@ namespace MyGiftList.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
-    public class UserController : ControllerBase
+    [Authorize] // annotation for protected routes (only authenticated users have access)
+    public class UserController : ControllerBase // inherits from the ConotrollerBase
     {
+        // -----repository pattern (separates data access logic/business logic -- acts as a middle man)----- //
         private readonly IUserRepository _userRepository;
         public UserController(IUserRepository userRepository)
         {
             _userRepository = userRepository;
         }
+        // --------------------------------------------------------------------------------------------------//
 
-        [HttpGet("{firebaseUserId}")]
+        [HttpGet("{firebaseUserId}")] // method decoration with route parameter
         public IActionResult GetByFirebaseUserId(string firebaseUserId)
         {
             var user = _userRepository.GetByFirebaseUserId(firebaseUserId);
@@ -24,7 +26,7 @@ namespace MyGiftList.Controllers
             {
                 return NotFound();
             }
-            return Ok(user);
+            return Ok(user); // OK() is used when we want to return data
         }
 
         [HttpGet("DoesUserExist/{firebaseUserId}")]

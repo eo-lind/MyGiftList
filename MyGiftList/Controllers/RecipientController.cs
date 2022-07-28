@@ -8,9 +8,10 @@ namespace MyGiftList.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    [Authorize] // annotation for protected routes (only authenticated users have access)
     public class RecipientController : ControllerBase
     {
+        // -----repository pattern (separates data access logic/business logic -- acts as a middle man)----- //
         private readonly IRecipientRepository _recipientRepository;
         private IUserRepository _userRepository;
 
@@ -19,21 +20,19 @@ namespace MyGiftList.Controllers
             _recipientRepository = recipientRepository;
             _userRepository = userRepository;
         }
+        // --------------------------------------------------------------------------------------------------//
 
-        // GET: api/<RecipientController>
-        // Lists only recipients created by current user
-        [HttpGet]
+        [HttpGet] // method decoration
         public IActionResult Get(int id)
         {
             id = GetCurrentUser().Id;
             var userRecipients = _recipientRepository.GetAll(id);
             if (userRecipients == null)
             { return NotFound(); }
-            return Ok(userRecipients);
+            return Ok(userRecipients); // OK() is used when we want to return data
         }
 
-        // GET api/<RecipientController>/5
-        [HttpGet("GetRecipientByIdWithGifts/{id}")]
+        [HttpGet("GetRecipientByIdWithGifts/{id}")] // method decoration with route parameter
         public IActionResult GetRecipientByIdWithGifts(int id)
         {
             var recipient = _recipientRepository.GetRecipientByIdWithGifts(id);
@@ -44,7 +43,6 @@ namespace MyGiftList.Controllers
             return Ok(recipient);
         }
 
-        // POST api/<RecipientController>
         [HttpPost]
         public IActionResult Post(Recipient recipient)
         {

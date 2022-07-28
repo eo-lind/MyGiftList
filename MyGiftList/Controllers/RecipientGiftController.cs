@@ -8,9 +8,10 @@ namespace MyGiftList.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    [Authorize] // annotation for protected routes (only authenticated users have access)
     public class RecipientGiftController : ControllerBase
     {
+        // -----repository pattern (separates data access logic/business logic -- acts as a middle man)----- //
         private readonly IRecipientGiftRepository _recipientGiftRepository;
         private IUserRepository _userRepository;
 
@@ -19,9 +20,9 @@ namespace MyGiftList.Controllers
             _recipientGiftRepository = recipientGiftRepository;
             _userRepository = userRepository;
         }
+        // --------------------------------------------------------------------------------------------------//
 
-        // GET api/<RecipientGiftController>/5
-        [HttpGet("{id}")]
+        [HttpGet("{id}")] // method decoration with route parameter
         public IActionResult GetRecipientGiftById(int id)
         {
             var recipientGift = _recipientGiftRepository.GetRecipientGiftById(id);
@@ -29,22 +30,18 @@ namespace MyGiftList.Controllers
             {
                 return NotFound();
             }
-            return Ok(recipientGift);
+            return Ok(recipientGift); // OK() is used when we want to return data
         }
 
-        // POST api/<RecipientGiftController>
         [HttpPost]
         public IActionResult Post(RecipientGift recipientGift)
         {
             recipientGift.UserId = GetCurrentUser().Id;
             _recipientGiftRepository.Add(recipientGift);
 
-            return NoContent();
+            return NoContent(); // NoContent() is used when we don't have any data to return
         }
 
-
-        // PUT api/<RecipientGiftController>/5
-        // {id} is a route param
         [HttpPut("{id}")]
         public IActionResult Update(int id, RecipientGift recipientGift)
         {
@@ -52,8 +49,6 @@ namespace MyGiftList.Controllers
             return NoContent();
         }
 
-        // DELETE api/<RecipientGiftController>/5
-        // {id} is a route param
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
