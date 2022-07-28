@@ -7,6 +7,5 @@ namespace MyGiftList.Repositories
     {
         List<Gift> GetAll(int id);
         void Add(Gift gift);
-        void AddRecipientGift(RecipientGift recipientGift);
     }
 }

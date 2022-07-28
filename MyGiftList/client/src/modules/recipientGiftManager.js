@@ -1,27 +1,23 @@
 import { getToken } from "./authManager"
 
-const baseUrl = "/api/gift"
-//TODO: update the baseUrls & path if add function changes
-
-const newBaseUrl = "/api/RecipientGift"
+const baseUrl = "/api/recipientGift"
 
 export const addRecipientGift = (recipientGift) => {
-  return getToken().then((token) => {
-    return fetch(`${baseUrl}/AddRecipientGift`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(recipientGift),
+    return getToken().then((token) => {
+        fetch(baseUrl, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify(recipientGift),
+        })
     })
-    .then((response) => response.json())
-  })
 }
 
 export const deleteRecipientGift = (id) => {
   return getToken().then((token) => {
-    return fetch(`${newBaseUrl}/${id}`, {
+    return fetch(`${baseUrl}/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`
@@ -33,7 +29,7 @@ export const deleteRecipientGift = (id) => {
 export const updateRecipientGift = (recipientGift) => {
 
   return getToken().then((token) =>
-      fetch(`${newBaseUrl}/${recipientGift.id}`, {
+      fetch(`${baseUrl}/${recipientGift.id}`, {
           method: "PUT",
           headers: {
               Authorization: `Bearer ${token}`,
@@ -47,7 +43,7 @@ export const updateRecipientGift = (recipientGift) => {
 // fetches a RecipientGift object by Id to be used with the edit form
 export const getRecipientGiftById = (id) => {
   return getToken().then((token) => {
-    return fetch(`${newBaseUrl}/${id}`, {
+    return fetch(`${baseUrl}/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`
       }

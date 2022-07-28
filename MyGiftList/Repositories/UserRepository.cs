@@ -54,7 +54,7 @@ namespace MyGiftList.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                        @INSERT INTO User (FirebaseUserId, [Name], Email)
+                        INSERT INTO [User] (FirebaseUserId, [Name], Email)
                         OUTPUT INSERTED.ID
                         VALUES (@FirebaseUserId, @Name, @Email)
                         ";

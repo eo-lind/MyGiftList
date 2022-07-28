@@ -5,9 +5,9 @@ using MyGiftList.Repositories;
 
 namespace MyGiftList.Controllers
 {
-    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class UserController : ControllerBase
     {
         private readonly IUserRepository _userRepository;
