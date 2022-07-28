@@ -27,7 +27,9 @@ VALUES
     (14, 'Winter Summer Salt & Pepper Shaker Set', 'https://a.co/d/7VY8uZc', 'https://m.media-amazon.com/images/I/61UrebzjDQL._AC_SX425_.jpg', 26.50, 2),
     (15, 'Mushroom Table Runner', 'https://www.anthropologie.com/shop/mushroom-table-runner', 'https://images.urbndata.com/is/image/Anthropologie/69198554_044_b?$a15-pdp-detail-shot$&fit=constrain&fmt=webp&qlt=80&wid=640', 58.00, 2),
     (16, 'Home Bar', 'https://www.anthropologie.com/shop/home-bar', 'https://images.urbndata.com/is/image/Anthropologie/78961174_000_b?$a15-pdp-detail-shot$&fit=constrain&fmt=webp&qlt=80&wid=640', 19.95, 2),
-    (17, 'Life in a French Country House', 'https://www.anthropologie.com/shop/life-in-a-french-country-house', 'https://images.urbndata.com/is/image/Anthropologie/78519618_048_b?$a15-pdp-detail-shot$&fit=constrain&fmt=webp&qlt=80&wid=640', 50.00, 1)
+    (17, 'Life in a French Country House', 'https://www.anthropologie.com/shop/life-in-a-french-country-house', 'https://images.urbndata.com/is/image/Anthropologie/78519618_048_b?$a15-pdp-detail-shot$&fit=constrain&fmt=webp&qlt=80&wid=640', 50.00, 1),
+    (18, 'Avocado Reusable Packable Tote', 'https://www.target.com/p/avocado-reusable-packable-tote-tabitha-brown-for-target/-/A-85206052#lnk=sametab', 'https://target.scene7.com/is/image/Target/GUEST_dc8534ba-da16-44cb-b192-5557ab879457?wid=199&hei=199&qlt=80&fmt=pjpeg', 5.00, 2),
+    (19, 'Printed Duvet Cover & Sham Set Teal', 'https://www.target.com/p/printed-duvet-cover-sham-set-teal-opalhouse-designed-with-jungalow/-/A-84109738?preselect=83756307#lnk=sametab', 'https://target.scene7.com/is/image/Target/GUEST_e446132f-c74e-42c3-ac5f-72704f656ec0?wid=253&hei=253&qlt=80&fmt=pjpeg', 69.99, 1)
 SET IDENTITY_INSERT [Gift] OFF
 
 
@@ -41,7 +43,9 @@ VALUES
     (4, 'Rita Hayworth', '1918-10-17', 2),
     (5, 'Norma Desmond', '1899-3-27', 2),
     (6, 'Paul Reubens', '1952-8-27', 2),
-    (7, 'Henry Rollins', '1961-2-13', 2)
+    (7, 'Henry Rollins', '1961-2-13', 2),
+    (8, 'Maila Nurmi', '1922-12-11', 1),
+    (9, 'Jenny Lewis', '1976-01-08', 1)
 SET IDENTITY_INSERT [Recipient] OFF
 
 --SET IDENTITY_INSERT [RecipientGift] ON
@@ -49,7 +53,7 @@ SET IDENTITY_INSERT [Recipient] OFF
 --    ([Id], [RecipientId], [GiftId], [Qty], [Notes], [UserId])
 --VALUES
 --    (1, 1, 1, 1, 'small', 1),
---    (2, 2, 2, 1, 'have giftwrapped', 1),
+--    (2, 2, 2, 1, 'have gift wrapped', 1),
 --    (3, 6, 3, 2, 'order an extra for me!', 2),
 --    (4, 7, 4, 1, 'XXL', 2),
 --    (5, 6, 4, 2, 'one in small, one in medium', 2)

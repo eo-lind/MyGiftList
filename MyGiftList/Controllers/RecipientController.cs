@@ -4,13 +4,11 @@ using MyGiftList.Models;
 using MyGiftList.Repositories;
 using System.Security.Claims;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace MyGiftList.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    //[Authorize]
     public class RecipientController : ControllerBase
     {
         private readonly IRecipientRepository _recipientRepository;

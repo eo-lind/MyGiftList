@@ -51,7 +51,7 @@ namespace MyGiftList
             services.AddTransient<IGiftRepository, GiftRepository>();
             services.AddTransient<IRecipientRepository, RecipientRepository>();
             services.AddTransient<IUserRepository, UserRepository>();
-
+            services.AddTransient<IRecipientGiftRepository, RecipientGiftRepository>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
