@@ -7,7 +7,7 @@ namespace MyGiftList.Models
     {
         public int Id { get; set; }
 
-        [Required]
+        [Required] // data annotation
         public string Name { get; set; }
 
         [Required]
