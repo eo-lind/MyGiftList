@@ -11,9 +11,11 @@ namespace MyGiftList.Models
         public string Name { get; set; }
 
         [Required]
+        [Url] // data validation annotation
         public string ShopUrl { get; set; }
 
         [Required]
+        [Url] // data validation annotation
         public string ImageUrl { get; set; }
 
         [Required]

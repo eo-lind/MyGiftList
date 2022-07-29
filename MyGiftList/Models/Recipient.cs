@@ -12,6 +12,7 @@ namespace MyGiftList.Models
         public string Name { get; set; }
 
         [Required]
+        [DisplayFormat(DataFormatString = "{0:dd/MM}")] // data validation annotation
         public DateTime Birthday { get; set; }
 
         public int UserId { get; set; }
