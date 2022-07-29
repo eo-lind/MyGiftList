@@ -48,6 +48,7 @@ namespace MyGiftList
                     };
                 });
 
+            // dependency injections creating a connection between two objects and their dependencies > Transient creates a new instance for every request
             services.AddTransient<IGiftRepository, GiftRepository>();
             services.AddTransient<IRecipientRepository, RecipientRepository>();
             services.AddTransient<IUserRepository, UserRepository>();
