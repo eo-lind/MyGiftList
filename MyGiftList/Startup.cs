@@ -70,7 +70,7 @@ namespace MyGiftList
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "MyGiftList v1"));
 
-                // Do not block requests while in development
+                // Do not block requests while in development (CORS is a browser security feature that prevents JS from talking to API's without the web server's consent)
                 app.UseCors(options =>
                 {
                     options.AllowAnyOrigin();
