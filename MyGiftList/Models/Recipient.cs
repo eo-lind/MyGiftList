@@ -8,10 +8,11 @@ namespace MyGiftList.Models
     {
         public int Id { get; set; }
 
-        [Required]
+        [Required] // data annotation
         public string Name { get; set; }
 
         [Required]
+        [DisplayFormat(DataFormatString = "{0:dd/MM}")] // data validation annotation
         public DateTime Birthday { get; set; }
 
         public int UserId { get; set; }

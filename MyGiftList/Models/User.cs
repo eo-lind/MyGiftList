@@ -8,9 +8,10 @@ namespace MyGiftList.Models
 
         public string FirebaseUserId { get; set; }
 
-        [Required]
+        [Required] // data annotation
         public string Name { get; set; }
 
+        [EmailAddress] // data validation annotation
         [Required]
         public string Email { get; set; }
     }

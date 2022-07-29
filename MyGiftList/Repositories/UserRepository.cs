@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using MyGiftList.Models;
-using MyGiftList.Utils;
+using MyGiftList.Utils; // DbUtils is a helper class we created to simplify some code (especially how to handle null values)
 
 namespace MyGiftList.Repositories
 {
@@ -45,7 +45,7 @@ namespace MyGiftList.Repositories
             }
         }
 
-        public void Add(User user)
+        public void Add(User user) // void: method doesn't return a value
         {
             using (var conn = Connection)
             {

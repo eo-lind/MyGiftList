@@ -9,9 +9,10 @@ namespace MyGiftList.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    [Authorize] // annotation for protected routes (only authenticated users have access)
     public class GiftController : ControllerBase
     {
+        // -----repository pattern (separates data access logic/business logic -- acts as a middle man)----- //
         private readonly IGiftRepository _giftRepository;
         private IUserRepository _userRepository;
 
@@ -20,10 +21,10 @@ namespace MyGiftList.Controllers
             _giftRepository = giftRepository;
             _userRepository = userRepository;
         }
+        // --------------------------------------------------------------------------------------------------//
 
-        // GET: api/<GiftController>
         // Lists only gifts created by current user
-        [HttpGet]
+        [HttpGet] // method decoration
         public IActionResult Get(int id)
         {
             id = GetCurrentUser().Id;
@@ -32,10 +33,9 @@ namespace MyGiftList.Controllers
             {
                 return NotFound();
             }
-            return Ok(userGifts);
+            return Ok(userGifts); // OK() is used when we want to return data
         }
 
-        // POST api/<GiftController>
         [HttpPost]
         public IActionResult Post(Gift gift)
         {

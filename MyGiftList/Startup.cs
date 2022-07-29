@@ -48,6 +48,7 @@ namespace MyGiftList
                     };
                 });
 
+            // dependency injections creating a connection between two objects and their dependencies > Transient creates a new instance for every request
             services.AddTransient<IGiftRepository, GiftRepository>();
             services.AddTransient<IRecipientRepository, RecipientRepository>();
             services.AddTransient<IUserRepository, UserRepository>();
@@ -68,6 +69,14 @@ namespace MyGiftList
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "MyGiftList v1"));
+
+                // Do not block requests while in development (CORS is a browser security feature that prevents JS from talking to API's without the web server's consent)
+                app.UseCors(options =>
+                {
+                    options.AllowAnyOrigin();
+                    options.AllowAnyMethod();
+                    options.AllowAnyHeader();
+                });
             }
 
             app.UseHttpsRedirection();
