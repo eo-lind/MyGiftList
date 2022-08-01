@@ -63,6 +63,7 @@ namespace MyGiftList.Repositories
                         LEFT JOIN RecipientGift rg ON r.Id = rg.RecipientId
                         LEFT JOIN Gift g ON g.Id = rg.GiftId
                         WHERE r.Id = @Id
+                        ORDER BY g.Name
                         ";
 
                     DbUtils.AddParameter(cmd, "@Id", id);
