@@ -23,6 +23,7 @@ namespace MyGiftList.Repositories
                         SELECT Id, [Name], Birthday, UserId
                         FROM Recipient
                         WHERE UserId = @id
+                        ORDER BY [Name]
                         ";
 
                     DbUtils.AddParameter(cmd, "@id", id);
