@@ -23,6 +23,7 @@ namespace MyGiftList.Repositories
                         SELECT Id, [Name], ShopUrl, ImageUrl, Price, UserId
                         FROM Gift
                         WHERE UserId = @id
+                        ORDER BY [Name]
                         ";
 
                     DbUtils.AddParameter(cmd, "@id", id);
