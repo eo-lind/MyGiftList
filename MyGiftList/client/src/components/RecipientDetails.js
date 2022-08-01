@@ -4,6 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { getRecipient } from "../modules/recipientManager";
 import { Link } from "react-router-dom"
 import { deleteRecipientGift } from "../modules/recipientGiftManager";
+import "./Custom.css"
 
 const RecipientDetails = () => {
   const [recipient, setRecipient] = useState();
@@ -25,42 +26,50 @@ const RecipientDetails = () => {
 
   return (
       <div className="container">
-          <div className="row justify-content-center">
-              <h4>{recipient.name}</h4>
-              <p>
-                  <strong>Birthday:</strong> {recipient.birthday}
-              </p>
-              <hr />
-              <h5>Gifts for {recipient.name}</h5>
-          </div>
-          {recipient.recipientGifts?.map((recipientGift) => (
-              <Card key={"recipientGift__" + recipientGift.id}>
-                  <CardBody>
-                      <div>
-                          <div className="gift-image-container">
-                              <img
-                                  src={recipientGift.gift.imageUrl}
-                                  alt={"image of " + recipientGift.gift.name}
-                                  className="gift-image"
-                              />
-                          </div>
-                          <h6>{recipientGift.gift.name}</h6>
-                          <p>
-                              <strong>Notes:</strong> {recipientGift?.notes}
-                          </p>
-                          <p>
-                              <strong>Quantity:</strong> {recipientGift.qty}
-                          </p>
-                          <p>
-                              ${recipientGift.gift.price} |{" "}
-                              <a
-                                  href={recipientGift.gift.shopUrl}
-                                  target="_blank"
+          <h2 className="page-header">{recipient.name}</h2>
+          <p>
+              <strong>Birthday:</strong> {recipient.birthday}
+          </p>
+          <hr />
+          <h5 className="page-subhead">Gifts for {recipient.name}</h5>
+
+          <div className="card-container">
+              {recipient.recipientGifts?.map((recipientGift) => (
+                  <Card key={"recipientGift__" + recipientGift.id} className="card-in-list">
+                      <CardBody>
+                          <div>
+                              <div className="gift-image-container">
+                                  <img
+                                      src={recipientGift.gift.imageUrl}
+                                      alt={
+                                          "image of " + recipientGift.gift.name
+                                      }
+                                      className="gift-image"
+                                  />
+                              </div>
+                              <h6>{recipientGift.gift.name}</h6>
+                              <p>
+                                  <strong>Notes:</strong> {recipientGift?.notes}
+                              </p>
+                              <p>
+                                  <strong>Quantity:</strong> {recipientGift.qty}
+                              </p>
+                              <p>
+                                  ${recipientGift.gift.price} |{" "}
+                                  <a
+                                      href={recipientGift.gift.shopUrl}
+                                      target="_blank"
+                                  >
+                                      Buy
+                                  </a>
+                              </p>
+                              <Link
+                                  to={`/recipientgifts/${recipientGift.id}/edit`}
                               >
-                                  Buy
-                              </a>{" "}
-                              |{" "}
-                              <span
+                                  <Button className="row-button">Edit</Button>
+                              </Link>
+                              <Button
+                                  className="row-button"
                                   onClick={() =>
                                       handleDeleteRecipientGift(
                                           recipientGift.id
@@ -68,15 +77,12 @@ const RecipientDetails = () => {
                                   }
                               >
                                   Remove
-                              </span>
-                          </p>
-                          <Link to={`/recipientgifts/${recipientGift.id}/edit`}>
-                              <Button>Edit</Button>
-                          </Link>
-                      </div>
-                  </CardBody>
-              </Card>
-          ))}
+                              </Button>
+                          </div>
+                      </CardBody>
+                  </Card>
+              ))}
+          </div>
       </div>
   )
 }

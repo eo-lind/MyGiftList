@@ -17,12 +17,12 @@ const GiftList = () => {
 
     return (
         <div className="container">
+            <h2 className="page-header">All Gifts</h2>
             <div>
-            <Link to="/gifts/add">Add New Gift</Link>
+                <Link to="/gifts/add">Add New Gift</Link>
             </div>
             {/* ----------ALL GIFTS---------- */}
-            <div className="row justify-content-center">
-                <h4>All Gifts</h4>
+            <div className="card-container">
                 {gifts.map((gift) => (
                     <Gift gift={gift} key={gift.id} />
                 ))}

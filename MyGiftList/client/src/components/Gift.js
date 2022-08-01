@@ -55,7 +55,7 @@ const Gift = ({ gift }) => {
   }
 
   return (
-      <Card>
+      <Card className="card-in-list">
           <CardBody>
               <div className="gift-image-container">
                   <img
@@ -72,11 +72,11 @@ const Gift = ({ gift }) => {
                       here
                   </a>
               </p>
-              {/* <p><Link to={`/gifts/${gift.id}/give`}>Assign Gift</Link></p> */}
+              <hr />
 
               {/* ---------- GIFT ASSIGNMENT FORM ---------- */}
               <form>
-                  <h2 className="partyForm__title">Give A Gift</h2>
+                  <h6>Give {gift.name}</h6>
                   <FormGroup>
                       <Label for="Recipient">Select a Recipient:</Label>
                       <select

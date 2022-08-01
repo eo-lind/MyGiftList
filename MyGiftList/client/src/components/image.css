@@ -1,6 +1,8 @@
 .gift-image-container {
   width: 6rem;
   height: 6rem;
+  display: block;
+  margin: 0 auto 2em auto;
 }
 
 .gift-image {
