@@ -4,6 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { getRecipient } from "../modules/recipientManager";
 import { Link } from "react-router-dom"
 import { deleteRecipientGift } from "../modules/recipientGiftManager";
+import "./Custom.css"
 
 const RecipientDetails = () => {
   const [recipient, setRecipient] = useState();
@@ -58,21 +59,18 @@ const RecipientDetails = () => {
                                   target="_blank"
                               >
                                   Buy
-                              </a>{" "}
-                              |{" "}
-                              <span
-                                  onClick={() =>
-                                      handleDeleteRecipientGift(
-                                          recipientGift.id
-                                      )
-                                  }
-                              >
-                                  Remove
-                              </span>
+                              </a>
                           </p>
                           <Link to={`/recipientgifts/${recipientGift.id}/edit`}>
-                              <Button>Edit</Button>
+                              <Button className="row-button">Edit</Button>
                           </Link>
+                          <Button
+                              className="row-button" onClick={() =>
+                                  handleDeleteRecipientGift(recipientGift.id)
+                              }
+                          >
+                              Remove
+                          </Button>
                       </div>
                   </CardBody>
               </Card>
