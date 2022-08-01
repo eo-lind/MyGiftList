@@ -29,7 +29,11 @@ VALUES
     (16, 'Home Bar', 'https://www.anthropologie.com/shop/home-bar', 'https://images.urbndata.com/is/image/Anthropologie/78961174_000_b?$a15-pdp-detail-shot$&fit=constrain&fmt=webp&qlt=80&wid=640', 19.95, 2),
     (17, 'Life in a French Country House', 'https://www.anthropologie.com/shop/life-in-a-french-country-house', 'https://images.urbndata.com/is/image/Anthropologie/78519618_048_b?$a15-pdp-detail-shot$&fit=constrain&fmt=webp&qlt=80&wid=640', 50.00, 1),
     (18, 'Avocado Reusable Packable Tote', 'https://www.target.com/p/avocado-reusable-packable-tote-tabitha-brown-for-target/-/A-85206052#lnk=sametab', 'https://target.scene7.com/is/image/Target/GUEST_dc8534ba-da16-44cb-b192-5557ab879457?wid=199&hei=199&qlt=80&fmt=pjpeg', 5.00, 2),
-    (19, 'Printed Duvet Cover & Sham Set Teal', 'https://www.target.com/p/printed-duvet-cover-sham-set-teal-opalhouse-designed-with-jungalow/-/A-84109738?preselect=83756307#lnk=sametab', 'https://target.scene7.com/is/image/Target/GUEST_e446132f-c74e-42c3-ac5f-72704f656ec0?wid=253&hei=253&qlt=80&fmt=pjpeg', 69.99, 1)
+    (19, 'Printed Duvet Cover & Sham Set Teal', 'https://www.target.com/p/printed-duvet-cover-sham-set-teal-opalhouse-designed-with-jungalow/-/A-84109738?preselect=83756307#lnk=sametab', 'https://target.scene7.com/is/image/Target/GUEST_e446132f-c74e-42c3-ac5f-72704f656ec0?wid=253&hei=253&qlt=80&fmt=pjpeg', 69.99, 1),
+    (20, 'Peaceful Bear 32oz. Insulated Water Bottle', 'https://www.parksproject.us/products/peaceful-bear-32oz-insulated-water-bottle', 'https://cdn.shopify.com/s/files/1/0871/5492/products/Peaceful_Bear_32oz_Insulated_Water_Bottle_Parks_Project-1a_2.jpg?v=1649177680', 38.00, 1),
+    (21, 'Duckie Dale shoes earrings', 'https://www.etsy.com/listing/930271942/pretty-in-pink-duckie-dale-shoes', 'https://i.etsystatic.com/19258404/r/il/a81698/2800813896/il_75x75.2800813896_ko70.jpg', 12.70, 1),
+    (22, 'Feel The Earth Breathe 32 oz. Insulated Bottle', 'https://www.parksproject.us/products/feel-the-earth-breathe-32-oz-insulated-bottle', 'https://cdn.shopify.com/s/files/1/0871/5492/products/Feel_The_Earth_Breathe_32oz_Insulated_Water_Bottle_Parks_Project-1a.jpg?v=1654106087', 38.00, 2),
+    (23, 'Eddie Munson Shirt', 'https://www.etsy.com/listing/1269495121', 'https://i.etsystatic.com/34209073/c/1473/1171/566/226/il/791db6/4029419010/il_75x75.4029419010_7bix.jpg', 9.55, 2)
 SET IDENTITY_INSERT [Gift] OFF
 
 
