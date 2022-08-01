@@ -55,7 +55,7 @@ const Gift = ({ gift }) => {
   }
 
   return (
-      <Card>
+      <Card className="card-in-list">
           <CardBody>
               <div className="gift-image-container">
                   <img

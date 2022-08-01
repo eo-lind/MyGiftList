@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 // uses the recipient prop to populate the card with specified properties from the recipient object
 const Recipient = ({ recipient}) => {
   return (
-      <Card>
+      <Card className="card-in-list">
           <CardBody>
               <h5>{recipient.name}</h5>
               <p>

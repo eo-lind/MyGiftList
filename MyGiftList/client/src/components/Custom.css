@@ -2,3 +2,20 @@
   margin-left: 0.5em;
   margin-right: 0.5em;
 }
+
+.home-main-container, .card-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.home-card, .card-in-list {
+  width: 40%;
+  margin: 1em;
+}
+
+.page-header, .page-subhead {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+

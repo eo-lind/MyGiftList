@@ -16,18 +16,18 @@ const RecipientList = () => {
   }, [])
 
   return (
-    <div className="container">
-      <div>
-        <Link to="/recipients/add">Add New Recipient</Link>
+      <div className="container">
+          <h2 className="page-header">All Recipients</h2>
+          <div>
+              <Link to="/recipients/add">Add New Recipient</Link>
+          </div>
+          {/* ----------ALL RECIPIENTS---------- */}
+          <div className="card-container">
+              {recipients.map((recipient) => (
+                  <Recipient recipient={recipient} key={recipient.id} />
+              ))}
+          </div>
       </div>
-      {/* ----------ALL RECIPIENTS---------- */}
-      <div className="row justify-content-center">
-        <h4>All Recipients</h4>
-        {recipients.map((recipient) => (
-          <Recipient recipient={recipient} key={recipient.id} />
-        ))}
-      </div>
-    </div>
   )
 }
 
