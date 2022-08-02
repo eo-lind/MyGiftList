@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { getRecipientGiftById, updateRecipientGift } from "../modules/recipientGiftManager"
-import { Button, Form, FormGroup, Label, Input } from "reactstrap"
+import { Button, Form, FormGroup, Label, Input, Card, CardBody } from "reactstrap"
 
 const RecipientGiftEditForm = () => {
     const [recipientGift, setRecipientGift] = useState({})
@@ -30,44 +30,55 @@ const RecipientGiftEditForm = () => {
     // https://thewebdev.info/2021/09/18/how-to-fix-the-a-component-is-changing-an-uncontrolled-input-of-type-text-to-be-controlled-error-in-react/ (used to resolve controlled input issue)
 
     return (
-        <Form>
-            <h4>Edit {recipientGift.id}</h4>
-            <FormGroup>
-                <Label for="quantity">Quantity:</Label>
-                <select
-                    name="qty"
-                    id="qty"
-                    value={recipientGift.qty ?? ""}
-                    onChange={handleInputChange}
-                >
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                </select>
-            </FormGroup>
+        <div className="form-card-container">
+            <Card className="form-card">
+                <CardBody>
+                    <Form>
+                        <h6 className="edit-heading">Edit Gift Assignment</h6>
+                        <FormGroup className="mgl-form-group">
+                            <Label for="quantity">Quantity:</Label>
+                            <br />
+                            <select
+                                className="form-control"
+                                name="qty"
+                                id="qty"
+                                value={recipientGift.qty ?? ""}
+                                onChange={handleInputChange}
+                            >
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </FormGroup>
 
-            <FormGroup>
-                <Label for="notes">Notes:</Label>
-                <Input
-                    type="text"
-                    name="notes"
-                    id="notes"
-                    placeholder="Notes (size, color, etc.)"
-                    value={recipientGift.notes ?? ""}
-                    onChange={handleInputChange}
-                />
-            </FormGroup>
-            <Button id="submit" onClick={handleClickSaveRecipientGift}>
-                Update
-            </Button>
-        </Form>
+                        <FormGroup className="mgl-form-group">
+                            <Label for="notes">Notes:</Label>
+                            <Input
+                                type="text"
+                                name="notes"
+                                id="notes"
+                                placeholder="Notes (size, color, etc.)"
+                                value={recipientGift.notes ?? ""}
+                                onChange={handleInputChange}
+                            />
+                        </FormGroup>
+                        <Button
+                            id="submit"
+                            onClick={handleClickSaveRecipientGift}
+                        >
+                            Update
+                        </Button>
+                    </Form>
+                </CardBody>
+            </Card>
+        </div>
     )
 }
 

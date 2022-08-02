@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react"
-import { Link, useNavigate, useParams } from "react-router-dom"
-import { Card, CardBody, Button, Form, FormGroup, Label, Input, FormText } from "reactstrap"
+import { useNavigate } from "react-router-dom"
+import { Card, CardBody, Button, Form, FormGroup, Label, Input, } from "reactstrap"
 import "./image.css"
+import "./Custom.css"
 import { addRecipientGift } from "../modules/recipientGiftManager"
 import { getAllRecipients } from "../modules/recipientManager"
 
@@ -77,7 +78,7 @@ const Gift = ({ gift }) => {
               {/* ---------- GIFT ASSIGNMENT FORM ---------- */}
               <form>
                   <h6>Give {gift.name}</h6>
-                  <FormGroup>
+                  <FormGroup className="mgl-form-group">
                       <Label for="Recipient">Select a Recipient:</Label>
                       <select
                           value={recipientGift.recipientId}
@@ -98,7 +99,7 @@ const Gift = ({ gift }) => {
                       </select>
                   </FormGroup>
 
-                  <FormGroup>
+                  <FormGroup className="mgl-form-group">
                       <Label for="quantity">Quantity:</Label>
                       <select
                           value={recipientGift.qty}
@@ -120,7 +121,7 @@ const Gift = ({ gift }) => {
                       </select>
                   </FormGroup>
 
-                  <FormGroup>
+                  <FormGroup className="mgl-form-group">
                       <Label for="notes">Notes:</Label>
                       <Input
                           type="text"
