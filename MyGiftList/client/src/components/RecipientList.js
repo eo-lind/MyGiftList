@@ -19,7 +19,7 @@ const RecipientList = () => {
       <div className="container">
           <h2 className="page-header">All Recipients</h2>
           <div>
-              <Link to="/recipients/add">Add New Recipient</Link>
+              <Link to="/recipients/add"><button className="alternate-btn-1">Add New Recipient</button></Link>
           </div>
           {/* ----------ALL RECIPIENTS---------- */}
           <div className="card-container">
