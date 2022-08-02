@@ -42,6 +42,7 @@
 
 .nav-main {
   background-color: #9fa8da;
+  
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
