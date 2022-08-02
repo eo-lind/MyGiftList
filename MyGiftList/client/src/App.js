@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router } from "react-router-dom";
 import { onLoginStatusChange } from "./modules/authManager";
 import { Spinner } from "reactstrap"
+import Footer from './components/Footer';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(null);
@@ -18,13 +19,14 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <Router>
-        <Header isLoggedIn={isLoggedIn} />
-        <ApplicationViews isLoggedIn={isLoggedIn} />
-      </Router>
-    </div>
-  );
+      <div className="App">
+          <Router>
+              <Header isLoggedIn={isLoggedIn} />
+              <ApplicationViews isLoggedIn={isLoggedIn} />
+              <Footer isLoggedIn={isLoggedIn} />
+          </Router>
+      </div>
+  )
   
 }
 
