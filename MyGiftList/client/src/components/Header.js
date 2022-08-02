@@ -1,13 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { logout } from "../modules/authManager";
+import "./image.css"
 
 const Header = ({ isLoggedIn }) => {
   return (
       <nav className="nav-main">
-          <Link to="/" className="navbar-title">
-              My Gift List
-          </Link>
+          <div className="logo-container">
+              <Link to="/" className="navbar-title">
+                <img
+                  src="/images/logo.png"
+                  alt="MyGiftList text logo"
+                  className="logo-image"
+              />
+              </Link>
+          </div>
+          
 
           <ul className="nav-list">
               {isLoggedIn && (
