@@ -7,6 +7,13 @@ const Recipient = ({ recipient}) => {
   return (
       <Card className="card-in-list">
           <CardBody>
+              <div className="recipient-image-container">
+                  <img
+                      src={recipient.imageUrl}
+                      alt={"image of " + recipient.name}
+                      className="recipient-image"
+                  />
+              </div>
               <h5>{recipient.name}</h5>
               <p>
                   <strong>Birthday:</strong> {recipient.birthday}

@@ -27,6 +27,13 @@ const RecipientDetails = () => {
   return (
       <div className="container">
           <h2 className="page-header">{recipient.name}</h2>
+          <div className="recipient-image-container-details">
+              <img
+                  src={recipient.imageUrl}
+                  alt={"image of " + recipient.name}
+                  className="recipient-image"
+              />
+          </div>
           <p>
               <strong>Birthday:</strong> {recipient.birthday}
           </p>
@@ -35,7 +42,10 @@ const RecipientDetails = () => {
 
           <div className="card-container">
               {recipient.recipientGifts?.map((recipientGift) => (
-                  <Card key={"recipientGift__" + recipientGift.id} className="card-in-list">
+                  <Card
+                      key={"recipientGift__" + recipientGift.id}
+                      className="card-in-list"
+                  >
                       <CardBody>
                           <div>
                               <div className="gift-image-container">
