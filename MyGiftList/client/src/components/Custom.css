@@ -1,7 +1,32 @@
+/* form & button styling */
+.alternate-btn-1 {
+  border: 1px solid #6c757d;
+  border-radius: 0.375rem;
+  line-height: 1;
+  padding: 0.375rem;
+  font-size: 0.75em;
+}
+
+.alternate-btn-2 {
+  border: 1px solid #6c757d;
+  background-color: #ffd3ff;
+  border-radius: 0.375rem;
+  line-height: 1;
+  padding: 0.375rem;
+  font-size: 0.75em;
+}
+
+
 .row-button {
   margin-left: 0.5em;
   margin-right: 0.5em;
 }
+
+.mgl-form-group {
+  text-align: left;
+}
+
+/* misc styling */
 
 .home-main-container, .card-container {
   display: flex;
@@ -23,21 +48,19 @@
   margin-bottom: 1em;
 }
 
-.alternate-btn-1 {
-  border: 1px solid #6c757d;
-  border-radius: 0.375rem;
-  line-height: 1;
-  padding: 0.375rem;
-  font-size: 0.75em;
+.form-card-container {
+  display: flex;
+  flex-flow: column wrap;
+  align-content: center;
+  padding: 2rem;
 }
 
-.alternate-btn-2 {
-  border: 1px solid #6c757d;
-  background-color: #ffd3ff;
-  border-radius: 0.375rem;
-  line-height: 1;
-  padding: 0.375rem;
-  font-size: 0.75em;
+.form-card {
+  width: 35%;
+}
+
+.edit-heading {
+  margin-bottom: 1.5em;
 }
 
 /* -----HEADER/NAV----- */
@@ -94,7 +117,7 @@ padding-left: 2em;
   flex-flow: row nowrap;
   justify-content: space-between;
   padding: 0.25rem 1rem;
-  position: sticky;
+  position: fixed;
   bottom: 0;
   width: 100%;
   color: #323539;

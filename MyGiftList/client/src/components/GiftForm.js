@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button, Form, FormGroup, Label, Input } from "reactstrap";
+import { Button, Form, FormGroup, Label, Input, Card, CardBody } from "reactstrap";
 import { addGift } from "../modules/giftManager";
 
 const GiftForm = () => {
@@ -32,60 +32,68 @@ const GiftForm = () => {
   }
 
   return (
-      <Form>
-          <FormGroup>
-              <Label for="name">What is the gift?</Label>
-              <Input
-                  type="text"
-                  name="name"
-                  id="name"
-                  placeholder="gift name"
-                  value={gift.name}
-                  onChange={handleInputChange}
-              />
-          </FormGroup>
+      <div className="form-card-container">
+          <Card className="form-card">
+              <CardBody>
+                  <Form>
+                      <FormGroup className="mgl-form-group">
+                          <Label for="name">What is the gift?</Label>
+                          <Input
+                              type="text"
+                              name="name"
+                              id="name"
+                              placeholder="gift name"
+                              value={gift.name}
+                              onChange={handleInputChange}
+                          />
+                      </FormGroup>
 
-          <FormGroup>
-              <Label for="shopUrl">Where can you buy it?</Label>
-              <Input
-                  type="text"
-                  name="shopUrl"
-                  id="shopUrl"
-                  placeholder="store URL"
-                  value={gift.shopUrl}
-                  onChange={handleInputChange}
-              />
-          </FormGroup>
+                      <FormGroup className="mgl-form-group">
+                          <Label for="shopUrl">Where can you buy it?</Label>
+                          <Input
+                              type="text"
+                              name="shopUrl"
+                              id="shopUrl"
+                              placeholder="store URL"
+                              value={gift.shopUrl}
+                              onChange={handleInputChange}
+                          />
+                      </FormGroup>
 
-          <FormGroup>
-              <Label for="imageUrl">Grab a photo of the gift:</Label>
-              <Input
-                  type="text"
-                  name="imageUrl"
-                  id="imageUrl"
-                  placeholder="image URL"
-                  value={gift.imageUrl}
-                  onChange={handleInputChange}
-              />
-          </FormGroup>
+                      <FormGroup className="mgl-form-group">
+                          <Label for="imageUrl">
+                              Grab a photo of the gift:
+                          </Label>
+                          <Input
+                              type="text"
+                              name="imageUrl"
+                              id="imageUrl"
+                              placeholder="image URL"
+                              value={gift.imageUrl}
+                              onChange={handleInputChange}
+                          />
+                      </FormGroup>
 
-          <FormGroup>
-              <Label for="price">How much is it?</Label>
-              <Input
-                  type="number"
-                  min="0.01"
-                  name="price"
-                  id="price"
-                  placeholder="0.00"
-                  value={gift.price}
-                  onChange={handleInputChange}
-              />
-          </FormGroup>
+                      <FormGroup className="mgl-form-group">
+                          <Label for="price">How much is it?</Label>
+                          <Input
+                              type="number"
+                              min="0.01"
+                              name="price"
+                              id="price"
+                              placeholder="0.00"
+                              value={gift.price}
+                              onChange={handleInputChange}
+                          />
+                      </FormGroup>
 
-          <Button className="btn btn-primary" onClick={handleSave}>
-            Submit
-          </Button>
-      </Form>
+                      <Button className="btn btn-primary" onClick={handleSave}>
+                          Submit
+                      </Button>
+                  </Form>
+              </CardBody>
+          </Card>
+      </div>
   )
 
 }
