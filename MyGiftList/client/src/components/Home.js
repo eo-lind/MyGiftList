@@ -75,7 +75,7 @@ const Home = () => {
                                 >
                                     <CardBody>
                                         <div>
-                                            {/* <div className="recipient-image-container">
+                                            <div className="recipient-image-container">
                                                 <img
                                                     src={recipient.imageUrl}
                                                     alt={
@@ -83,7 +83,7 @@ const Home = () => {
                                                     }
                                                     className="recipient-image"
                                                 />
-                                            </div> */}
+                                            </div>
                                             <h6>{recipient.name}</h6>
                                             <Link
                                                 to={
