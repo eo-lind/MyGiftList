@@ -19,7 +19,7 @@ const GiftList = () => {
         <div className="container">
             <h2 className="page-header">All Gifts</h2>
             <div>
-                <Link to="/gifts/add">Add New Gift</Link>
+                <Link to="/gifts/add"><button className="alternate-btn-1">Add New Gift</button></Link>
             </div>
             {/* ----------ALL GIFTS---------- */}
             <div className="card-container">
