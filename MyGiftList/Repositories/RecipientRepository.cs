@@ -20,7 +20,7 @@ namespace MyGiftList.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                        SELECT Id, [Name], Birthday, UserId
+                        SELECT Id, [Name], Birthday, ImageUrl, UserId
                         FROM Recipient
                         WHERE UserId = @id
                         ORDER BY [Name]
@@ -39,6 +39,7 @@ namespace MyGiftList.Repositories
                                 Id = DbUtils.GetInt(reader, "Id"),
                                 Name = DbUtils.GetString(reader, "Name"),
                                 Birthday = DbUtils.GetDateTime(reader, "Birthday"),
+                                ImageUrl = DbUtils.GetString(reader, "ImageUrl"),
                                 UserId = DbUtils.GetInt(reader, "UserId")
                             });
                         }
@@ -58,7 +59,7 @@ namespace MyGiftList.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                        SELECT r.Id, r.[Name], r.Birthday, r.UserId, rg.Id AS RecipientGiftId, rg.RecipientId, rg.GiftId AS GiftIdOnRecipientGift, rg.Qty, rg.notes, rg.UserId AS RecipientGiftUserId, g.Id AS GiftId, g.[Name] AS GiftName, g.ShopUrl, g.Imageurl, g.Price
+                        SELECT r.Id, r.[Name], r.Birthday, r.UserId, r.ImageUrl AS RecipientImage, rg.Id AS RecipientGiftId, rg.RecipientId, rg.GiftId AS GiftIdOnRecipientGift, rg.Qty, rg.notes, rg.UserId AS RecipientGiftUserId, g.Id AS GiftId, g.[Name] AS GiftName, g.ShopUrl, g.Imageurl, g.Price
                         FROM Recipient r
                         LEFT JOIN RecipientGift rg ON r.Id = rg.RecipientId
                         LEFT JOIN Gift g ON g.Id = rg.GiftId
@@ -80,6 +81,7 @@ namespace MyGiftList.Repositories
                                     Id = id,
                                     Name = DbUtils.GetString(reader, "Name"),
                                     Birthday = DbUtils.GetDateTime(reader, "Birthday"),
+                                    ImageUrl = DbUtils.GetString(reader, "RecipientImage"),
                                     UserId = DbUtils.GetInt(reader, "UserId"),
                                     RecipientGifts = new List<RecipientGift>()
                                 };
@@ -123,13 +125,14 @@ namespace MyGiftList.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                        INSERT INTO Recipient ([Name], Birthday, UserId)
+                        INSERT INTO Recipient ([Name], Birthday, ImageUrl, UserId)
                         OUTPUT INSERTED.ID
-                        VALUES (@Name, @Birthday, @UserId)
+                        VALUES (@Name, @Birthday, @ImageUrl, @UserId)
                         ";
 
                     DbUtils.AddParameter(cmd, "@Name", recipient.Name);
                     DbUtils.AddParameter(cmd, "@Birthday", recipient.Birthday);
+                    DbUtils.AddParameter(cmd, "@ImageUrl", recipient.ImageUrl);
                     DbUtils.AddParameter(cmd, "@UserId", recipient.UserId);
 
                     recipient.Id = (int)cmd.ExecuteScalar();
