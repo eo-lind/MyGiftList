@@ -57,6 +57,7 @@ CREATE TABLE [Recipient] (
   [Id] int PRIMARY KEY IDENTITY(1, 1),
   [Name] nvarchar(255) NOT NULL,
   [Birthday] datetime NOT NULL,
+  [ImageUrl] nvarchar(255) NOT NULL,
   [UserId] int NOT NULL
 )
 GO
