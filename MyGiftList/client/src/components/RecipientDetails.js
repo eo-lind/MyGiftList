@@ -15,7 +15,6 @@ const RecipientDetails = () => {
     getRecipient(id).then(setRecipient)
   }, [])
 
-
   const handleDeleteRecipientGift = (giftId) => {
     deleteRecipientGift(giftId).then(() => navigate("/recipients"))
   }
@@ -35,7 +34,11 @@ const RecipientDetails = () => {
               />
           </div>
           <p>
-              <strong>Birthday:</strong> {recipient.birthday}
+              <strong>Birthday:</strong>{" "}
+              {new Date(recipient.birthday).toLocaleDateString("en-us", {
+                  month: "long",
+                  day: "numeric",
+              })}
           </p>
           <hr />
           <h5 className="page-subhead">Gifts for {recipient.name}</h5>
