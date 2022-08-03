@@ -16,7 +16,8 @@ const Recipient = ({ recipient}) => {
               </div>
               <h5>{recipient.name}</h5>
               <p>
-                  <strong>Birthday:</strong> {recipient.birthday}
+                  <strong>Birthday:</strong>{" "}
+                  {new Date(recipient.birthday).toLocaleDateString('en-us', {month: "long", day: "numeric"})}
               </p>
               <p>
                   <Link to={"/recipients/" + recipient.id}>
