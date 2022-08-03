@@ -27,7 +27,7 @@ const Home = () => {
             <h2 className="page-header">Welcome to MyGiftList!</h2>
             <div className="home-main-container">
                 {/* ---------- GIFT COLUMN ---------- */}
-                <Card className="home-card">
+                <div className="home-card">
                     <CardBody>
                         <h5>Gifts</h5>
                         <Link to={`/gifts`}>
@@ -59,10 +59,10 @@ const Home = () => {
                             ))}
                         </div>
                     </CardBody>
-                </Card>
+                </div>
                 {/* ---------- RECIPIENT COLUMN ---------- */}
-                <Card className="home-card">
-                    <CardBody>
+                <div className="home-card">
+                    <CardBody >
                         <h5>Recipients</h5>
                         <Link to={`/recipients`}>
                             <button className="alternate-btn-1">See All</button>
@@ -101,7 +101,7 @@ const Home = () => {
                             ))}
                         </div>
                     </CardBody>
-                </Card>
+                </div>
             </div>
         </>
     )

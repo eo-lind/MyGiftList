@@ -6,7 +6,8 @@ import { addRecipient } from "../modules/recipientManager";
 const RecipientForm = () => {
   const emptyRecipientObj = {
     name: "",
-    birthday: ""
+    birthday: "",
+    imageUrl: ""
   }
 
   const [recipient, setRecipient] = useState(emptyRecipientObj)
@@ -56,6 +57,20 @@ const RecipientForm = () => {
                               id="birthday"
                               placeholder="gift recipient's birthday"
                               value={recipient.birthday}
+                              onChange={handleInputChange}
+                          />
+                      </FormGroup>
+
+                      <FormGroup className="mgl-form-group">
+                          <Label for="imageUrl">
+                              Grab a photo of them:
+                          </Label>
+                          <Input
+                              type="text"
+                              name="imageUrl"
+                              id="imageUrl"
+                              placeholder="image URL"
+                              value={recipient.imageUrl}
                               onChange={handleInputChange}
                           />
                       </FormGroup>
