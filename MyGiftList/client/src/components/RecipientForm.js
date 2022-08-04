@@ -6,8 +6,8 @@ import { addRecipient } from "../modules/recipientManager";
 const RecipientForm = () => {
   const emptyRecipientObj = {
     name: "",
-    birthday: "",
-    imageUrl: ""
+    imageUrl: "",
+    birthday: ""
   }
 
   const [recipient, setRecipient] = useState(emptyRecipientObj)

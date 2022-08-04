@@ -12,7 +12,6 @@ namespace MyGiftList.Models
         public string Name { get; set; }
 
         [Required]
-        [Url]
         public string ImageUrl { get; set; }
 
         [Required]
